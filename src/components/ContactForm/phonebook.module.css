@@ -3,28 +3,44 @@
 }
 
 .phonebook_container {
-    width: 600px;
-    padding: 30px 0 30px 20px;
+    display: flex;
+    flex-direction: column;
+    width: 50%;
     border-color: black;
     border-style: solid;
+    background-color: aliceblue;
+    padding-bottom: 20px;
+    padding-top: 10px;
 }
 
 .name_label {
-    display: flex;
-    margin-bottom: 10px;
+    padding: 10px 0px 10px 20px;
 }
 
 .number_label {
-    display: flex;
-    margin-bottom: 10px;
-    margin-top: 20px;
+    padding: 10px 0px 10px 20px;
+
+}
+
+.name_input {
+    width: 30%;
+    margin: 10px 0px 20px 30px;
+}
+
+.number_input {
+    width: 30%;
+    margin: 0px 0px 20px 30px;
+   
 }
 
 .addcontact_button {
-    display: flex;
-    margin-top: 30px;
+    width: 20%;
 }
 
 .delete_button {
     margin: 0 0 0 10px;
+}
+
+.button_div {
+    margin: 0px 0px 0px 20px;
 }

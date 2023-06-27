@@ -5,13 +5,18 @@
 
 .search_title {
     display: flex;
-    padding: 0 0 10px;
+    margin-bottom: 20px;
 }
 
-.delete_button {
-    margin: 0 0 0 10px;
-}
 
 .list_items {
-    padding: 10px 0 10px 0
+    display: flex;
+    width: 30%;
+    flex-direction: row;
+    padding: 10px 0 10px 0px;
+}
+
+
+.button_div {
+    margin-left: auto;
 }

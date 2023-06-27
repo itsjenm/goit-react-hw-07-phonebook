@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import styled from './phonebook.module.css';
-import { addContacts } from 'redux/contactsSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { getContacts } from 'redux/selectors';
+import { fetchContacts, postContacts } from 'redux/operations';
+import { Button, Input } from '@mui/material';
 
 //A function that adds a user into the contact list
 export default function Phonebook() {
@@ -16,7 +17,8 @@ export default function Phonebook() {
     number: '',
   });
 
- 
+
+
   //change handler
   function userChangeHandler(event) {
     const name = event.target.name;
@@ -42,7 +44,10 @@ export default function Phonebook() {
       return null;
     });
     if (isThere === false) {
-      dispatch(addContacts(userData.name, userData.number));
+        // add my data to my form 
+      dispatch(postContacts(userData)).then(() => {
+        dispatch(fetchContacts());
+      });
     }
     setUserData({
       ...userData,
@@ -60,11 +65,13 @@ export default function Phonebook() {
 
   return (
     <form className={styled.phonebook_form} onSubmit={submitHandler}>
-      <div className={styled.phonebook_container}>
+      <div fixed className={styled.phonebook_container}>
         <label htmlFor="name" className={styled.name_label}>
           Name
         </label>
-        <input
+        <Input id="component-simple" defaultValue="Composed TextField"
+          size="small"
+          className={styled.name_input}
           type="text"
           value={userData.name}
           name="name"
@@ -74,7 +81,10 @@ export default function Phonebook() {
           required
         />
         <label className={styled.number_label}>Number</label>
-        <input
+        <Input
+          inputProps={{ inputMode: 'numeric' }} 
+          size="small"
+          className={styled.number_input}
           type="tel"
           name="number"
           value={userData.number}
@@ -83,9 +93,11 @@ export default function Phonebook() {
           title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
           required
         />
-        <button className={styled.addcontact_button} type="submit">
-          Add contact
-        </button>
+        <div className={styled.button_div}>
+          <Button variant='contained' className={styled.addcontact_button} type="submit">
+            Add contact
+          </Button>
+        </div>
       </div>
     </form>
   );
