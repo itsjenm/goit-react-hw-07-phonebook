@@ -1,0 +1,17 @@
+
+.filter_container {
+    margin-left: 15px;
+}
+
+.search_title {
+    display: flex;
+    padding: 0 0 10px;
+}
+
+.delete_button {
+    margin: 0 0 0 10px;
+}
+
+.list_items {
+    padding: 10px 0 10px 0
+}
